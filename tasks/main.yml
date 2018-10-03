@@ -11,13 +11,17 @@
   when: ansible_os_family == "Debian"
   copy:
     dest: /etc/apt/sources.list.d/neo4j.list
-    content: "http://debian.neo4j.org/repo stable/"
+    content: http://debian.neo4j.org/repo stable/
     force: yes
+
+- name: Update cache
+  become: true
+  apt:
+    update_cache: yes
 
 - name: Install Java 8
   become: true
   apt:
-    update_cache: yes
     name: openjdk-8-jdk
 
 - name: Update cache and install Neo4j
