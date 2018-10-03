@@ -1,0 +1,27 @@
+---
+- name: Add Neo4j apt keys
+  become: true
+  when: ansible_os_family == "Debian"
+  apt_key:
+    url: https://debian.neo4j.org/neotechnology.gpg.key
+    state: present
+
+- name: Add Neo4j repository
+  become: true
+  when: ansible_os_family == "Debian"
+  get_url:
+    url: "http://debian.neo4j.org/repo stable/"
+    dest: /etc/apt/sources.list.d/neo4j.list
+    force: yes
+
+- name: Install Java 8
+  become: true
+  apt:
+    update_cache: yes
+    name: openjdk-8-jdk
+
+- name: Update cache and install Neo4j
+  become: true
+  when: ansible_os_family == "Debian"
+  apt:
+    name: neo4j
