@@ -10,7 +10,7 @@
   become: true
   when: ansible_os_family == "Debian"
   get_url:
-    url: "http://debian.neo4j.org/repo stable/"
+    url: http://debian.neo4j.org/repo stable/
     dest: /etc/apt/sources.list.d/neo4j.list
     force: yes
 
