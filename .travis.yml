@@ -14,7 +14,7 @@ script:
     - ansible-playbook -i tests/inventory tests/test.yml --syntax-check
     - ansible-playbook -i tests/inventory tests/test.yml --connection=local
     - export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/;export PATH=$JAVA_HOME:/bin:$PATH
-    - neo4j status
+    - neo4j version
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

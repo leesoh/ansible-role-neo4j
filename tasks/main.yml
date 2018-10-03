@@ -14,17 +14,13 @@
     content: deb http://debian.neo4j.org/repo stable/
     force: yes
 
-- name: Update cache
-  become: true
-  apt:
-    update_cache: yes
-
 - name: Install Java 8
   become: true
   apt:
+    update_cache: yes
     name: openjdk-8-jdk
 
-- name: Update cache and install Neo4j
+- name: Install Neo4j
   become: true
   when: ansible_os_family == "Debian"
   apt:
