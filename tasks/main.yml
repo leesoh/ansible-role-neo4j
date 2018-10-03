@@ -11,8 +11,7 @@
   when: ansible_os_family == "Debian"
   copy:
     dest: /etc/apt/sources.list.d/neo4j.list
-      content: |
-        http://debian.neo4j.org/repo stable/
+      content: 'http://debian.neo4j.org/repo stable/'
     force: yes
 
 - name: Install Java 8
